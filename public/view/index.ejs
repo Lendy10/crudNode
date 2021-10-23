@@ -1,0 +1,41 @@
+<%- include("header")  -%>
+<div class="container my-5">
+    <div class="row d-flex">
+        <% if (typeof alert.message !== 'undefined' ) { %>
+        <div class="alert alert-<%= alert.message.alert %>" role="alert">
+            <%= alert.message.msg %>
+        </div>
+        <%  }; %>
+        <h1>Student Data Management Application</h1>
+        <div>
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NIM</th>
+                        <th>Student Name</th>
+                        <th>Study Program</th>
+                        <th>email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% students.map((element, index) => { %>
+                    <tr>
+                        <td><%= index+1 %> </td>
+                        <td><%= element.nim %></td>
+                        <td><%= element.name %></td>
+                        <td><%= element.study %></td>
+                        <td><%= element.email %></td>
+                        <td>
+                            <a href="/edit/<%= element.id %>" class="btn btn-success">Edit</a>
+                            <a href="/delete/<%= element.id %>" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include("footer")  -%>
